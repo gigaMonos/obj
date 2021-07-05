@@ -1,0 +1,147 @@
+обьекты наполняются свойства состоящиее и ключа ии его значения 
+let usertInfo = {
+    name: //ключ "Pitter", //значение
+    age: 30,
+};
+Ключ еще называют идентификатором или именем свойства блока
+ИМена из двух и больше слов берутся в кавычки и синтаксис их вызова в консоль меняется
+Если по непонятным нам присинам нужно вычислить имя свойство это делается таким способо
+В квадратных скобках мы пишем имя переменной которое раннее было присвоенна строка с помощью оператора сложение 
+добавляем нужное нам слово в скобках, после двоеточия:  пишим значения
+Всегда оставляй пробелы в скобках для влажуемых слов 
+let firstPart = "likes";
+let usertInfo = {
+    name: "Pitter", 
+    age: 30, 
+    [firstPart + " javascript"]: true,
+};
+console.log(usertInfo["likes javascript"]);
+Также мы можем передать переменную с именем в блок и вызвать резудьтат в квадрвтных скобках (мы можем сделать переменную именем свойства блока(ключем))
+let firstPart = "likes javascript";
+let usertInfo = {
+    name: "Pitter", 
+    age: 30, 
+    [firstPart]: true,
+};
+console.log(usertInfo[firstPart]);
+Пресвоив переменной - имя свойства блока с помощью квадратных скобок мы можем выводить результат в консоль ( это как то расширяет наши возможности???)
+внутри блока мы можем импользовать зарезервированные слова
+Ключ (имя свойства) в блоке  может быть числом 
+В квадратных скобках выводится именно ЗНАЧЕНИЕ свойства, а не его имя
+let usertInfo = {
+    0: "My name is Zero",
+};
+console.log(usertInfo[0]);
+
+Symbol основной задачей символоов заключает в том, чтобы скрывать необходимые свойства блоков, потому что они не 
+видны в for in 
+описание возможности влаживать обьект в обьект и медоты вызыва в консоль 
+
+//Вложенность внутри блока может быть другой блок
+let usertInfo = {
+    name: "Yuna",
+    age: 28,
+    address: {
+        city: "Kherson",
+        street: "Ivana Boguna",
+    }
+};
+console.log(usertInfo);
+console.log(usertInfo.address);
+console.log(usertInfo.address.city);
+console.log(usertInfo.address.street);
+
+Возврат(проверка) свойств блока с помощью функции return
+function makeUserInfo (name, age){
+    return{
+    name: name,
+    age: age,
+    };
+}
+let userInfo = makeUserInfo("Yuna", 30);
+console.log(userInfo);
+Удаление свойств  с помощью DELETE 
+let userInfo = {
+    name: 'Yuna',
+    age: 28,
+    "I like Js": true,
+}
+console.log(userInfo);
+delete userInfo.age;
+console.log(userInfo);
+delete userInfo["I like Js"];
+console.log(userInfo);
+Точно таким образом можно менять значение свойст и в константе
+
+Копирование обьекта не создает полноценный обьект , а копирует лишь ссылку на него 
+let userInfo = {
+    name: 'Yuna',
+    age: 28,
+}
+console.log(userInfo);
+let user = userInfo; //копирование
+console.log(user);
+user.age = 18;
+console.log(user);
+//Дублирование обьектов 
+//Синтаксис
+Object.assign(куда(обьект), что(свойство), что(свойтсво №2,...));
+let userInfo = {
+    name: "Yuna",
+    age: 28,
+} 
+let user = Object.assign({}, userInfo);
+user.age = 18;
+console.log(userInfo);
+console.log(user);
+
+Опциональная цепочка существует для того, чтобы в случае классической проверки (через точку) при отсутствие свойство 
+не выдовало ошбибку в консоль делают опциональную цепочку с помощью оператора ?.
+//опциональная цепочка
+let userInfo = {
+    //name: "Yuna",
+    //age: 28,
+}
+//console.log(userInfo.name.age);
+console.log(userInfo?.name?.age);  - андефайдент вмсето ошибки
+
+приверка с помощью оператор In 
+этот оператор поможет когда значение свойства блока undefined 
+сиспользованием этого оператора мы получим в консоль результат undefined и код будет работать
+другие поверки не сработают
+let userInfo = {
+    name: undefined,
+}
+if ("name" in userInfo){
+    console.log(userInfo);
+};
+Для перебора все свойств обьекта используется цикл for in 
+for ( let key in userInfo){
+    //тело цикла выполняется для каждого свойства обьекта
+}
+для того что вызвать значения ключей необходимо поместь ключ в квадратные скобки
+let usertInfo = {
+    name: "Yuna",
+    age: 28,
+    address: {
+        city: "Kherson",
+        street: "Ivana Boguna",
+    }
+};
+for ( let key in userInfo){
+    console.log(key); //вызов имен (ключей)
+    console.log(usertInfo[key]); //вызов значения ключей
+}
+for ( let key in usertInfo.address){
+    console.log(usertInfo.address[key]);
+};
+
+Методами обьекта могут быть функции 
+функця должна быть внутри обьекта
+Словом this можно заменить данный обьект
+
+this обращается к родительскому блоку 
+this использывать надежнее поскольку 
+если в дальнейем обьекту будет присваиваться другая переменная и будет
+менятья тип данныч - нам выдаст ошибку
+Функция КОНСТРУКТОр это обычная функция которая отличается тем, что ее имя начинается 
